@@ -19,4 +19,4 @@ pip install edinet_wrap
 export API_KEY="your_edinet_api_key"
 ```
 yyyy-mm-dd形式で日付を入力し、銘柄コードを入力することでその会社のEdinet上での書類を確認できます。
-まだ実用的な機能は少なく、これから追加していく予定です。
+まだ機能は少なく、これから追加していく予定です。
