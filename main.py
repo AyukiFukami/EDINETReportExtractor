@@ -40,3 +40,40 @@ for document in document_list["results"]:
 # 保存する
 with open("documents.json", "w", encoding="utf-8") as f:
     f.write(json.dumps(documents_class_by_secCode, indent=4, ensure_ascii=False))
+
+# 無効な文字を置き換える関数
+def sanitize_filename(filename):
+    import re
+    return re.sub(r'[\/:*?"<>|]', '_', filename)
+
+# ダウンロード先ディレクトリを設定
+download_directory = "downloads"
+os.makedirs(download_directory, exist_ok=True)
+
+# PDFをダウンロードして保存する関数
+def download_pdf(doc_id, file_name):
+    try:
+        content = edi.get_document(doc_id, type_=2)
+        with open(file_name, "wb") as f:
+            f.write(content)
+        print(f"PDF downloaded and saved as {file_name}")
+    except Exception as e:
+        print(f"Failed to download PDF for document ID {doc_id}. Error: {e}")
+
+# 銘柄コードから書類があるか確認する
+while True:
+    ticker = input("確認したい会社の銘柄コードを入力してください: ")
+    SecCode = ticker + '0'
+    if SecCode in documents_class_by_secCode:
+        print("次の書類が確認できました。pdfをダウンロードします")
+        for document in documents_class_by_secCode[SecCode]:
+            print(document[0])
+            doc_name = sanitize_filename(ticker + ':' + document[2] + '_' + document[0])
+            file_name = os.path.join(download_directory, f"{doc_name}.pdf")
+            download_pdf(document[1], file_name)
+    else:
+        print("指定された銘柄コードに対応する書類は見つかりませんでした。")
+    
+    another = input("他の銘柄コードを確認しますか？ y/n: ")
+    if another.lower() != 'y':
+        break
