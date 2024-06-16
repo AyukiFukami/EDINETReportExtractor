@@ -2,7 +2,7 @@
 
 リポジトリをクローン:
 ```sh
-git clone https://
+git clone https://github.com/AyukiFukami/EDINETReportExtractor
 cd edinet-document-downloader
 
 ```
