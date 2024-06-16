@@ -46,15 +46,21 @@ def main():
     download_directory = "downloads"
     os.makedirs(download_directory, exist_ok=True)
 
-    # ユーザーから日付を入力させる
-    date_str = input("Please enter the date in YYYY-MM-DD format: ")
+    # ユーザーに今日の書類を見るかどうか尋ねる
+    use_today = input("今日の書類を見ますか？ (y/n): ").strip().lower()
 
-    # 日付を解析し、datetimeオブジェクトに変換する
-    try:
-        date = datetime.strptime(date_str, "%Y-%m-%d")
-    except ValueError:
-        print("Invalid date format. Please use YYYY-MM-DD format.")
-        return
+    if use_today == 'y':
+        date = datetime.today()
+    else:
+        # ユーザーから日付を入力させる
+        date_str = input("Please enter the date in YYYY-MM-DD format: ")
+        
+        # 日付を解析し、datetimeオブジェクトに変換する
+        try:
+            date = datetime.strptime(date_str, "%Y-%m-%d")
+        except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD format.")
+            return
 
     # APIキーを環境変数"API_KEY"から持ってくる
     API_KEY = os.getenv("API_KEY")
@@ -81,8 +87,8 @@ def main():
         else:
             print("指定された銘柄コードに対応する書類は見つかりませんでした。")
         
-        another = input("他の銘柄コードを確認しますか？ y/n: ")
-        if another.lower() != 'y':
+        another = input("他の銘柄コードを確認しますか？ y/n: ").strip().lower()
+        if another != 'y':
             break
 
 
