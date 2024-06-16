@@ -1,5 +1,6 @@
 #file for testing
 test.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -163,5 +164,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-#json_file
+#json file
 *.json
+
+#pdf file
+*.pdf
