@@ -7,8 +7,8 @@ cd edinet-document-downloader
 
 ```
 
-このレポジトリを使うには、edinet_wrap ライブラリがインストールされている必要があります。
-インストールされていない場合は、インストールしてください。
+このレポジトリを使用するには、edinet_wrap ライブラリが必要です。
+まだインストールされていない場合は、以下のコマンドを実行してください。
 
 ```sh
 pip install edinet_wrap
