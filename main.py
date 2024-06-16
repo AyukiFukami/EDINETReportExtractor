@@ -68,7 +68,7 @@ while True:
         print("次の書類が確認できました。pdfをダウンロードします")
         for document in documents_class_by_secCode[SecCode]:
             print(document[0])
-            doc_name = sanitize_filename(ticker + ':' + document[2] + '_' + document[0])
+            doc_name = sanitize_filename(ticker + '_' + document[2] + '_' + document[0])
             file_name = os.path.join(download_directory, f"{doc_name}.pdf")
             download_pdf(document[1], file_name)
     else:
