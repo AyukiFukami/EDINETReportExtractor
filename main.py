@@ -2,7 +2,11 @@ import os
 import json
 from datetime import datetime
 from edinet import Edinet
+import config
 
+install_set = {
+    key: value for key, value in config.doc.items() if key not in config.non_install_set
+}
 
 def get_and_save_document_list(edi, date):
     """指定した日付のドキュメントリストを取得し、JSONファイルに保存する。"""
