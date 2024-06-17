@@ -16,7 +16,8 @@ def get_and_save_document_list(edi, date):
             documents_class_by_secCode[document["secCode"]].append((
                 document["docDescription"],
                 document["docID"],
-                document["filerName"]
+                document["filerName"],
+                document["docTypeCode"]
             ))
 
     with open("documents.json", "w", encoding="utf-8") as f:
