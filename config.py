@@ -132,8 +132,3 @@ doc = {
     "370": "基準日の届出書",
     "380": "変更の届出書"
 }
-
-install_set = {
-    key: value for key, value in doc.items() if key not in non_install_set
-}
-print(install_set)
